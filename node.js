@@ -1,15 +1,19 @@
+require('dotenv').config();
 const express = require('express');
 const nodemailer = require('nodemailer');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 8080;
 
 app.use(cors({
-  origin: 'https://your-frontend-url.com'
+  origin: [
+    'https://688dbe6c202cdc4735596861--fortf0olio.netlify.app',
+    'https://your-frontend-url.com'
+  ]
 }));
+
 app.use(bodyParser.json());
 
 app.post('/send-email', async (req, res) => {
