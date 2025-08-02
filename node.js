@@ -5,9 +5,13 @@ const bodyParser = require('body-parser');
 require('dotenv').config();
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const allowedOrigins = ['https://fortf0olio.netlify.app'];
+app.use(cors({
+  origin: allowedOrigins,
+  methods: ['POST'],
+  allowedHeaders: ['Content-Type']
+}));
 
-app.use(cors());
 app.use(bodyParser.json());
 
 app.post('/send-email', async (req, res) => {
