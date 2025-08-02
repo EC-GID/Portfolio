@@ -9,8 +9,8 @@ const PORT = process.env.PORT || 8080;
 
 app.use(cors({
   origin: [
-    'https://688dbe6c202cdc4735596861--fortf0olio.netlify.app',
-    'https://your-frontend-url.com'
+    'https://688dce9d950604000849bf59--fortf0olio.netlify.app',
+    'https://fortf0olio.netlify.app'
   ]
 }));
 
@@ -38,6 +38,7 @@ app.post('/send-email', async (req, res) => {
     await transporter.sendMail(mailOptions);
     res.status(200).json({ success: true, message: 'Message sent successfully!' });
   } catch (error) {
+    console.error('Email error:', error);
     res.status(500).json({ success: false, message: 'Failed to send message.' });
   }
 });
