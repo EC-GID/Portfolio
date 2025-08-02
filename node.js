@@ -5,13 +5,11 @@ const bodyParser = require('body-parser');
 require('dotenv').config();
 
 const app = express();
-const allowedOrigins = ['https://fortf0olio.netlify.app'];
-app.use(cors({
-  origin: allowedOrigins,
-  methods: ['POST'],
-  allowedHeaders: ['Content-Type']
-}));
+const PORT = process.env.PORT || 8080;
 
+app.use(cors({
+  origin: 'https://your-frontend-url.com'
+}));
 app.use(bodyParser.json());
 
 app.post('/send-email', async (req, res) => {
@@ -36,11 +34,10 @@ app.post('/send-email', async (req, res) => {
     await transporter.sendMail(mailOptions);
     res.status(200).json({ success: true, message: 'Message sent successfully!' });
   } catch (error) {
-    console.error(error);
     res.status(500).json({ success: false, message: 'Failed to send message.' });
   }
 });
 
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
