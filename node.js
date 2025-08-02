@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 8080;
 
 app.use(cors({
   origin: [
-    'https://688dce9d950604000849bf59--fortf0olio.netlify.app',
+    'https://688de4a48ac37d0008f42fb4--fortf0olio.netlify.app',
     'https://fortf0olio.netlify.app'
   ]
 }));
